@@ -13,6 +13,7 @@ html {
   --color-social: #4d5ae5;
   --color-hover-social: #31d0aa;
   --color-icon-customs: #8e8f99;
+  --color-modal: #fcfcfc;
   --main-font: 'Roboto', sans-serif;
   --sec-font: 'Raleway', sans-serif;
 }
@@ -29,7 +30,8 @@ h2,
 h3,
 h4,
 h5,
-h6 {
+h6,
+p {
   margin: 0;
 }
 
@@ -126,18 +128,21 @@ a {
 }
 
 .nav-item {
+  display: block;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text-color);
-  padding: 24px 0;
+  padding-top: 24px;
+  padding-left: 0;
+  padding-right: 0;
 }
 
 .nav-menu {
   display: flex;
   gap: 40px;
-  padding: 24px 0;
+  /* padding: 24px 0; */
 }
 
 .nav-item:hover,
@@ -147,10 +152,14 @@ a {
   color: var(--butt-color-hover);
 }
 
-.nav-item:hover,
-.nav-item:focus {
-  border-bottom: 4px solid var(--butt-color-hover);
+.nav-item.active::after {
+  display: block;
+  content: '';
+  width: 100%;
+  height: 4px;
+  margin-top: 20px;
   border-radius: 2px;
+  background-color: var(--butt-color-hover);
 }
 
 /* Контакт */
@@ -316,6 +325,7 @@ a {
 }
 
 .banner {
+  /* position: relative; */
   background-color: var(--text-color);
   background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
     url('../images/background/main-image.jpg');
@@ -513,7 +523,6 @@ a {
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
-  margin-top: 0;
   margin-bottom: 16px;
 }
 
@@ -560,4 +569,87 @@ a {
 .icon-social {
   margin: auto;
   fill: var(--color-sec-font);
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  width: 1440px;
+  height: 677px;
+  background-color: rgba(46, 47, 66, 0.4);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  animation-name: modal-hide;
+  animation-duration: 2000ms;
+}
+
+.modal {
+  position: absolute;
+  min-width: 408px;
+  padding: 0;
+  margin: 0;
+  min-height: 576px;
+  top: 88px;
+  left: 516px;
+  border-radius: 4px;
+  /* animation-name: modal-show;
+  animation-duration: 3000ms; */
+  background-color: var(--color-modal);
+}
+
+.modal.hide {
+  animation-name: modal-hide;
+  animation-duration: 5s;
+}
+
+.close {
+  position: absolute;
+  top: 23px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border-radius: 50%;
+  text-align: center;
+  background: var(--color-butt);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.icon-modal {
+  margin: auto;
+  fill: black;
+}
+
+/* Анимация для появления модального окна */
+@keyframes modal-show {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Анимация для скрытия модального окна */
+@keyframes modal-hide {
+  from {
+    opacity: 1;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0);
+  }
 }

@@ -29,12 +29,12 @@
           <a class="link logo" href="./index.html"> WEB<span class="studio-up">Studio</span></a>
           <ul class="list nav-menu">
             <li>
-              <a class="link nav-item" href="./index.html">Studio</a>
+              <a class="link nav-item active" href="./index.html">Studio</a>
             </li>
             <li>
               <a class="link nav-item" href="./portfolio.html">Portfolio</a>
             </li>
-            <li><a class="link nav-item" href="">Contacts</a></li>
+            <li><a class="link nav-item" href="./contact.html">Contacts</a></li>
           </ul>
         </nav>
         <!-- Контакт -->
@@ -55,7 +55,16 @@
       <section class="section banner">
         <div class="container-banner container">
           <h1 class="banner-h">Effective Solutions for Your Business</h1>
-          <button class="banner-but" type="button">Order Service</button>
+          <button class="banner-but" type="button" data-modal-open>Order Service</button>
+        </div>
+        <div class="backdrop is-hidden hide" data-modal>
+          <div class="modal">
+            <button class="close" type="button" data-modal-close>
+              <svg class="icon-modal" width="8" height="8">
+                <use href="./images/icons.svg#icon-instagram"></use>
+              </svg>
+            </button>
+          </div>
         </div>
       </section>
       <!-- Наше преимущество-->
@@ -383,5 +392,6 @@
         </div>
       </div>
     </footer>
+    <script src="./js/modal.js"></script>
   </body>
 </html>
