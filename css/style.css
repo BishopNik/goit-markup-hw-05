@@ -128,21 +128,19 @@ a {
 }
 
 .nav-item {
-  display: block;
+  position: relative;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: var(--text-color);
-  padding-top: 24px;
-  padding-left: 0;
-  padding-right: 0;
+  padding: 24px 0;
 }
 
 .nav-menu {
   display: flex;
   gap: 40px;
-  /* padding: 24px 0; */
+  padding: 24px 0;
 }
 
 .nav-item:hover,
@@ -153,11 +151,12 @@ a {
 }
 
 .nav-item.active::after {
+  position: absolute;
+  bottom: 0;
   display: block;
   content: '';
   width: 100%;
   height: 4px;
-  margin-top: 20px;
   border-radius: 2px;
   background-color: var(--butt-color-hover);
 }
@@ -219,6 +218,7 @@ a {
 }
 
 .card {
+  display: flex;
   width: calc((100% - 48px) / 3);
 }
 
@@ -250,10 +250,49 @@ a {
 .service-h {
   margin-bottom: 72px;
 }
+
 .project-card {
   padding: 32px 16px;
   border: 1px solid var(--color-butt);
   border-top: none;
+}
+
+.thumb {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.aboutcard {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  padding: 40px 32px 164px;
+  background-color: var(--butt-color);
+  color: var(--color-sec-font);
+  font-size: 16px;
+  line-height: 1.5;
+  letter-spacing: 0.02em;
+  transform: translateY(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:focus .aboutcard,
+.card:hover .aboutcard {
+  transform: translateY(0);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes overlayY {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
 }
 
 .tech-h,
@@ -325,7 +364,6 @@ a {
 }
 
 .banner {
-  /* position: relative; */
   background-color: var(--text-color);
   background-image: linear-gradient(to bottom, rgba(46, 47, 66, 0.7), rgba(46, 47, 66, 0.7)),
     url('../images/background/main-image.jpg');
@@ -574,39 +612,43 @@ a {
 .backdrop {
   position: fixed;
   top: 0;
-  width: 1440px;
-  height: 677px;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
   background-color: rgba(46, 47, 66, 0.4);
+  opacity: 1;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .backdrop.is-hidden {
-  opacity: 0;
-  visibility: hidden;
+  visibility: visible;
   pointer-events: none;
-  animation-name: modal-hide;
-  animation-duration: 2000ms;
+  opacity: 0;
+  transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(1.5);
 }
 
 .modal {
   position: absolute;
   min-width: 408px;
+  min-height: 576px;
   padding: 0;
   margin: 0;
-  min-height: 576px;
-  top: 88px;
-  left: 516px;
+  top: 50%;
+  left: 50%;
   border-radius: 4px;
-  /* animation-name: modal-show;
-  animation-duration: 3000ms; */
   background-color: var(--color-modal);
-}
-
-.modal.hide {
-  animation-name: modal-hide;
-  animation-duration: 5s;
+  transform: translate(-50%, -50%) scale(1);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: absolute;
   top: 23px;
   right: 24px;
@@ -626,30 +668,35 @@ a {
 }
 
 .icon-modal {
-  margin: auto;
   fill: black;
 }
 
-/* Анимация для появления модального окна */
-@keyframes modal-show {
-  from {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
+.socset {
+  display: block;
+  min-width: 300px;
+  min-height: 35px;
+  padding: 15px;
+  margin: 50px auto;
+  border: 4px solid red;
+  border-radius: 8px;
+  font-size: 24px;
+  background-color: #31d0aa;
+
+  /* transform: translateY(100%); */
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    width 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Анимация для скрытия модального окна */
-@keyframes modal-hide {
-  from {
-    opacity: 1;
-    transform: scale(0.7);
-  }
-  to {
-    opacity: 0;
-    transform: scale(0);
-  }
+.socset:hover {
+  background-color: yellow;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  width: 600px;
+}
+
+.socset::before {
+  width: 24px;
+  height: 24px;
+  border: 2px solid #ffffff;
+  background-color: #2e2f42;
+  background-image: url('./images/icons.svg#icon-instagram');
 }
