@@ -190,8 +190,6 @@ a {
 }
 
 .butts-punkt {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
   padding: 12px 24px;
   border: 1px solid var(--color-butt);
   border-radius: 4px;
@@ -203,13 +201,13 @@ a {
   line-height: 1.5;
   letter-spacing: 0.04em;
   cursor: pointer;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .butts-punkt:hover,
 .butts-punkt:focus {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--color-white);
   background-color: var(--butt-color-hover);
   border: 1px solid transparent;
@@ -357,12 +355,12 @@ a {
 
 .card > .link {
   display: block;
-  /* transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); */
+  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .card > .link:hover,
 .card > .link:focus {
-  transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  /* transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1); */
   box-shadow: 0px 1px 6px rgba(46, 47, 66, 0.08), 0px 1px 1px rgba(46, 47, 66, 0.16),
     0px 2px 1px rgba(46, 47, 66, 0.08);
 }
@@ -485,12 +483,10 @@ a {
   color: var(--color-icon-customs);
   border-radius: 4px;
   background-color: var(--color-white);
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .icon-customers {
-  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1), border 250ms cubic-bezier(0.4, 0, 0.2, 1);
-  background-repeat: no-repeat;
-  background-position: center;
   fill: currentColor;
 }
 
@@ -679,15 +675,15 @@ a {
   padding: 0;
   border-radius: 50%;
   text-align: center;
+  cursor: pointer;
   background: var(--color-butt);
   border: 1px solid rgba(0, 0, 0, 0.1);
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .close:hover,
 .close:focus {
   background-color: var(--butt-color-hover);
-  text-decoration: none;
-  cursor: pointer;
 }
 
 .icon-modal {
